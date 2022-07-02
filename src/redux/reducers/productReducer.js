@@ -9,7 +9,7 @@ const productReducer = (state = initialState, action) => {
     case FETCH_PRODUCTS:
       return {
         ...state,
-        data: [...state.data, ...action.data],
+        data: [...action.data],
       };
     default:
       return state;

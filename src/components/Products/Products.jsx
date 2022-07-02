@@ -9,13 +9,12 @@ const Products = () => {
 
   useEffect(() => {
     dispatch(getProducts());
-    console.log(data);
   }, []);
 
   return (
     <div className=" rounded-lg h-full px-[5%] pb-[8%] grid grid-cols-4 gap-10 shadow-xl w-full">
-      {data.map((item) => (
-        <div key={item.id} className="shadow-md h-full mb-2 ">
+      {data.map((item, idx) => (
+        <div key={idx} className="shadow-md h-full mb-2 ">
           <img
             src={item.photo}
             alt={item.name}

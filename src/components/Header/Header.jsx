@@ -1,8 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { searchProducts } from "../../redux/actions/ProductActions/productActions";
 
 const Header = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { cartList } = useSelector((state) => state.cartReducer);
 
@@ -13,6 +15,13 @@ const Header = () => {
         onClick={() => navigate("/")}
       >
         Redux-Saga Shopping Cart
+      </div>
+      <div className="bg-slate-400 w-[50%] rounded-lg">
+        <input
+          type="text"
+          className="bg-transparent outline-none border-none p-3"
+          onChange={(e) => dispatch(searchProducts(e.target.value))}
+        />
       </div>
       <div
         className="relative cursor-pointer"
