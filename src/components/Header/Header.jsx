@@ -1,14 +1,25 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const { cartList } = useSelector((state) => state.cartReducer);
+
   return (
-    <div className="py-[2%] px-[5%] bg-[#F5F5F5] rounded-lg flex items-center justify-between mb-4">
-      <div className="text-black font-bold text-2xl">
+    <div className="py-[2%] px-[5%] bg-[#F5F5F5] rounded-lg flex items-center justify-between mb-4 w-full">
+      <div
+        className="text-black font-bold text-2xl cursor-pointer"
+        onClick={() => navigate("/")}
+      >
         Redux-Saga Shopping Cart
       </div>
-      <div className="relative">
-        <span className="absolute -top-4 h-5 w-5 bg-black flex items-center justify-center rounded-full text-white -right-2 cursor-pointer">
-          0
+      <div
+        className="relative cursor-pointer"
+        onClick={() => navigate("/Cart")}
+      >
+        <span className="absolute bg-black -top-4 h-5 w-5  flex items-center justify-center rounded-full text-white -right-2 cursor-pointer">
+          {cartList.length}
         </span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
